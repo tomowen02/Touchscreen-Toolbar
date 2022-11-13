@@ -37,3 +37,40 @@ def one_note():
 
 def whiteboard():
     system("start ms-whiteboard-cmd:")
+
+def copy():
+    keyboard = Controller()
+    keyboard.press(Key.alt_l)
+    keyboard.press(Key.tab)
+    keyboard.release(Key.tab)
+    keyboard.release(Key.alt_l)
+    sleep(0.2)
+    keyboard.press(Key.ctrl_l)
+    keyboard.press("c")
+    keyboard.release(Key.ctrl_l)
+    keyboard.release("c")
+    print("done")
+    
+def paste():
+    keyboard = Controller()
+    keyboard.press(Key.alt_l)
+    keyboard.press(Key.tab)
+    keyboard.release(Key.tab)
+    keyboard.release(Key.alt_l)
+    sleep(0.2)
+    keyboard.press(Key.ctrl_l)
+    keyboard.press("v")
+    keyboard.release(Key.ctrl_l)
+    keyboard.release("v")
+    print("done")
+    
+def delete():
+    keyboard = Controller()
+    keyboard.press(Key.alt_l)
+    keyboard.press(Key.tab)
+    keyboard.release(Key.tab)
+    keyboard.release(Key.alt_l)
+    sleep(0.2)
+    keyboard.press(Key.delete)
+    keyboard.release(Key.delete)
+    print("done")

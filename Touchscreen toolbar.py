@@ -29,6 +29,10 @@ make_button("Win", commands.win)
 make_button("Notes", commands.one_note)
 make_button("White", commands.whiteboard)
 make_button("Shift", commands.hold_shift)
+make_button("Copy", commands.copy)
+make_button("Paste", commands.paste)
+make_button("Del", commands.delete)
+
 make_button("Exit", exit, tk.BOTTOM)
 
 window.mainloop()
