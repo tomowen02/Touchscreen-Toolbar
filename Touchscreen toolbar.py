@@ -28,6 +28,12 @@ make_button("Multi", commands.multi_task)
 make_button("Win", commands.win)
 make_button("Notes", commands.one_note)
 make_button("White", commands.whiteboard)
+
+# Temporary solution to padding out the keyboard related buttons
+w = tk.Text(window)
+w.insert(tk.INSERT, "")
+w.pack()
+
 make_button("Shift", commands.hold_shift)
 make_button("Copy", commands.copy)
 make_button("Paste", commands.paste)
