@@ -1,10 +1,9 @@
 import tkinter as tk
 import commands
 from time import sleep
-import threading
+from threading import Thread
 from pynput.mouse import Controller as Mouse_Controller
-from os import path
-import tempfile
+from tempfile import gettempdir
 
 running = True
 
@@ -32,7 +31,7 @@ def make_button(button_text, command, side=tk.TOP):
 def save_pointer_location():
     mouse = Mouse_Controller()
     while running:
-        path = tempfile.gettempdir() + f"\pointer_loc.txt"
+        path = gettempdir() + f"\pointer_loc.txt"
         with open(path, 'w+') as f:
             pos = mouse.position
             f.write(str(pos))
@@ -64,5 +63,5 @@ make_button("Del", commands.delete)
 
 make_button("Exit", quit_program, tk.BOTTOM)
 
-threading.Thread(target=save_pointer_location).start()
+Thread(target=save_pointer_location).start()
 loop()

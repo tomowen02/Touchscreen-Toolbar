@@ -3,14 +3,14 @@ from pynput.mouse import Controller as Mouse_Controller
 from os import system
 from time import sleep
 from popupmsg import popupmsg
-import tempfile
+from tempfile import gettempdir
 
 mouse = Mouse_Controller()
 
 ### Functions to help with other commands ###
 
 def get_cursor_pos(filename="pointer_loc.txt"):
-    path = tempfile.gettempdir() + f"\pointer_loc.txt"
+    path = gettempdir() + f"\pointer_loc.txt"
     with open(path, 'r') as f:
         pos_as_str = f.read()
         pos_as_tuple = eval(pos_as_str)
