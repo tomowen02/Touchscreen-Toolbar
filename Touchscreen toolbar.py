@@ -3,7 +3,8 @@ import commands
 from time import sleep
 import threading
 from pynput.mouse import Controller as Mouse_Controller
-import sys
+from os import path
+import tempfile
 
 running = True
 
@@ -31,7 +32,8 @@ def make_button(button_text, command, side=tk.TOP):
 def save_pointer_location():
     mouse = Mouse_Controller()
     while running:
-        with open("pointer_loc.txt", 'w+') as f:
+        path = tempfile.gettempdir() + f"\pointer_loc.txt"
+        with open(path, 'w+') as f:
             pos = mouse.position
             f.write(str(pos))
         sleep(1.25)
