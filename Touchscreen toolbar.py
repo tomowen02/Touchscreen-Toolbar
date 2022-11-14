@@ -24,7 +24,7 @@ def loop():
 def save_pointer_location():
     mouse = Mouse_Controller()
     while True:
-        with open("pointer_loc.txt", 'w') as f:
+        with open("pointer_loc.txt", 'w+') as f:
             pos = mouse.position
             f.write(str(pos))
         sleep(1.25)
