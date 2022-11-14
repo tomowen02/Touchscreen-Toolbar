@@ -1,6 +1,8 @@
 import tkinter as tk
-from tkinter import messagebox
 import commands
+from time import sleep
+import threading
+from pynput.mouse import Controller as Mouse_Controller
 
 def make_button(button_text, command, side=tk.TOP):
     button = tk.Button(
@@ -14,6 +16,18 @@ def make_button(button_text, command, side=tk.TOP):
         side = side,
         fill=tk.X
     )
+    
+def loop():
+    while True:
+        window.update()
+    
+def save_pointer_location():
+    mouse = Mouse_Controller()
+    while True:
+        with open("pointer_loc.txt", 'w') as f:
+            pos = mouse.position
+            f.write(str(pos))
+        sleep(1.25)
 
 
 ### MAIN ###
@@ -41,4 +55,5 @@ make_button("Del", commands.delete)
 
 make_button("Exit", exit, tk.BOTTOM)
 
-window.mainloop()
+threading.Thread(target=save_pointer_location).start()
+loop()
