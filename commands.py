@@ -1,9 +1,24 @@
 from pynput.keyboard import Key, Controller
+from pynput.mouse import Controller as Mouse_Controller
 from os import system
 from time import sleep
 from popupmsg import popupmsg
 
+mouse = Mouse_Controller()
+
+### Functions to help with other commands ###
+
+def get_cursor_pos(filename="pointer_loc.txt"):
+    with open("pointer_loc.txt", 'r') as f:
+        pos_as_str = f.read()
+        pos_as_tuple = eval(pos_as_str)
+        return pos_as_tuple
+
+
+### Command functions ###
+
 def snip_screen():
+    pos_before_snip = get_cursor_pos()
     keyboard = Controller()
     keyboard.press(Key.cmd)
     keyboard.press(Key.shift)
@@ -11,6 +26,7 @@ def snip_screen():
     keyboard.release(Key.cmd)
     keyboard.release(Key.shift)
     keyboard.release("s")
+    mouse.position = pos_before_snip
     
 def hold_shift():
     popupmsg("The shift key is about to be held down virtually")
