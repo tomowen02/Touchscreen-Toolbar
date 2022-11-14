@@ -95,3 +95,12 @@ def delete():
     keyboard.press(Key.delete)
     keyboard.release(Key.delete)
     print("done")
+    
+def osk():
+    keyboard = Controller()
+    keyboard.press(Key.cmd)
+    keyboard.press(Key.ctrl_l)
+    keyboard.press("o")
+    keyboard.release(Key.cmd)
+    keyboard.release(Key.ctrl_l)
+    keyboard.release("o")

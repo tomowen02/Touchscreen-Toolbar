@@ -48,6 +48,7 @@ window.attributes('-topmost',True)
 make_button("Snip", commands.snip_screen)
 make_button("Multi", commands.multi_task)
 make_button("Win", commands.win)
+make_button("OSK", commands.osk)
 make_button("Notes", commands.one_note)
 make_button("White", commands.whiteboard)
 
