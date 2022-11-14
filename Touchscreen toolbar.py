@@ -3,6 +3,17 @@ import commands
 from time import sleep
 import threading
 from pynput.mouse import Controller as Mouse_Controller
+import sys
+
+running = True
+
+def loop():
+    while running:
+        window.update()
+
+def quit_program():
+    global running
+    running = False
 
 def make_button(button_text, command, side=tk.TOP):
     button = tk.Button(
@@ -17,13 +28,9 @@ def make_button(button_text, command, side=tk.TOP):
         fill=tk.X
     )
     
-def loop():
-    while True:
-        window.update()
-    
 def save_pointer_location():
     mouse = Mouse_Controller()
-    while True:
+    while running:
         with open("pointer_loc.txt", 'w+') as f:
             pos = mouse.position
             f.write(str(pos))
@@ -53,7 +60,7 @@ make_button("Copy", commands.copy)
 make_button("Paste", commands.paste)
 make_button("Del", commands.delete)
 
-make_button("Exit", exit, tk.BOTTOM)
+make_button("Exit", quit_program, tk.BOTTOM)
 
 threading.Thread(target=save_pointer_location).start()
 loop()
