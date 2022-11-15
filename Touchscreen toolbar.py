@@ -14,6 +14,7 @@ pointer_location = (0, 0)
 def loop():
     while running:
         window.update()
+        sleep(0.1)
 
 def quit_program():
     global running
