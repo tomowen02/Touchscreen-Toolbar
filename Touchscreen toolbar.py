@@ -3,10 +3,14 @@ import commands
 from time import sleep
 from threading import Thread
 from pynput.mouse import Controller as Mouse_Controller
-from tempfile import gettempdir
+from functools import partial
+
 
 running = True
+pointer_location = (0, 0)
 
+
+### Functions ###
 def loop():
     while running:
         window.update()
@@ -30,12 +34,13 @@ def make_button(button_text, command, side=tk.TOP):
     
 def save_pointer_location():
     mouse = Mouse_Controller()
+    global pointer_location
     while running:
-        path = gettempdir() + f"\pointer_loc.txt"
-        with open(path, 'w+') as f:
-            pos = mouse.position
-            f.write(str(pos))
-        sleep(1.25)
+        pointer_location = mouse.position
+        sleep(1.5)
+
+def command_with_pointer_loc(command):
+    command(pointer_location)
 
 
 ### MAIN ###
@@ -45,10 +50,10 @@ window.geometry(f"50x{window.winfo_screenheight()}+0+0")
 window.overrideredirect(True)
 window.attributes('-topmost',True)
 
-make_button("Snip", commands.snip_screen)
+make_button("Snip", partial(command_with_pointer_loc, commands.snip_screen))
 make_button("Multi", commands.multi_task)
 make_button("Win", commands.win)
-make_button("OSK", commands.osk)
+make_button("OSK", partial(command_with_pointer_loc, commands.osk))
 make_button("Notes", commands.one_note)
 make_button("White", commands.whiteboard)
 

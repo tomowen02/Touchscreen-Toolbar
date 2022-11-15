@@ -20,15 +20,14 @@ def get_cursor_pos(filename="pointer_loc.txt"):
 
 ### Command functions ###
 
-def snip_screen():
-    pos_before_snip = get_cursor_pos()
+def snip_screen(pos_before_click):
     keyboard.press(Key.cmd)
     keyboard.press(Key.shift)
     keyboard.press("s")
     keyboard.release(Key.cmd)
     keyboard.release(Key.shift)
     keyboard.release("s")
-    mouse.position = pos_before_snip
+    mouse.position = pos_before_click
     
 def hold_shift():
     popupmsg("The shift key is about to be held down virtually")
@@ -90,10 +89,11 @@ def delete():
     keyboard.release(Key.delete)
     print("done")
     
-def osk():
+def osk(pos_before_click):
     keyboard.press(Key.cmd)
     keyboard.press(Key.ctrl_l)
     keyboard.press("o")
     keyboard.release(Key.cmd)
     keyboard.release(Key.ctrl_l)
     keyboard.release("o")
+    mouse.position = pos_before_click
