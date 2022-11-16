@@ -1,6 +1,6 @@
 import tkinter as tk
 import commands
-from time import sleep
+from time import localtime, sleep
 from threading import Thread
 from pynput.mouse import Controller as Mouse_Controller
 from functools import partial
@@ -14,6 +14,7 @@ pointer_location = (0, 0)
 def loop():
     while running:
         window.update()
+        update_time()
         sleep(0.1)
 
 def quit_program():
@@ -39,6 +40,11 @@ def save_pointer_location():
     while running:
         pointer_location = mouse.position
         sleep(1.5)
+        
+def update_time():
+    time = localtime()
+    time_str = f"{time.tm_hour}:{time.tm_min}"
+    time_string_var.set(time_str)
 
 def command_with_pointer_loc(command):
     command(pointer_location)
@@ -59,9 +65,8 @@ make_button("Notes", commands.one_note)
 make_button("White", commands.whiteboard)
 
 # Temporary solution to padding out the keyboard related buttons
-w = tk.Text(window)
-w.insert(tk.INSERT, "")
-w.pack()
+buffer_0 = tk.Label(window, textvariable=tk.StringVar())
+buffer_0.pack()
 
 make_button("Shift", commands.hold_shift)
 make_button("Copy", commands.copy)
@@ -69,6 +74,11 @@ make_button("Paste", commands.paste)
 make_button("Del", commands.delete)
 
 make_button("Exit", quit_program, tk.BOTTOM)
+
+# Display time
+time_string_var = tk.StringVar()
+time_label = tk.Label(window, textvariable=time_string_var)
+time_label.pack(side=tk.BOTTOM)
 
 Thread(target=save_pointer_location).start()
 loop()
