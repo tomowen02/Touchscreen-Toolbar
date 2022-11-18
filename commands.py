@@ -97,3 +97,33 @@ def osk(pos_before_click):
     keyboard.release(Key.ctrl_l)
     keyboard.release("o")
     mouse.position = pos_before_click
+    
+def zones_layout_vert():
+    keyboard.press(Key.ctrl_l)
+    keyboard.press(Key.cmd)
+    keyboard.press(Key.alt_l)
+    keyboard.press("0")
+    keyboard.release(Key.ctrl_l)
+    keyboard.release(Key.cmd)
+    keyboard.release(Key.alt_l)
+    keyboard.release("0")
+    
+def zones_layout_full():
+    keyboard.press(Key.ctrl_l)
+    keyboard.press(Key.cmd)
+    keyboard.press(Key.alt_l)
+    keyboard.press("2")
+    keyboard.release(Key.ctrl_l)
+    keyboard.release(Key.cmd)
+    keyboard.release(Key.alt_l)
+    keyboard.release("2")
+    
+def zones_layout_split():
+    keyboard.press(Key.ctrl_l)
+    keyboard.press(Key.cmd)
+    keyboard.press(Key.alt_l)
+    keyboard.press("1")
+    keyboard.release(Key.ctrl_l)
+    keyboard.release(Key.cmd)
+    keyboard.release(Key.alt_l)
+    keyboard.release("1")

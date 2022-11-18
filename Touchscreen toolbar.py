@@ -68,10 +68,18 @@ make_button("White", commands.whiteboard)
 buffer_0 = tk.Label(window, textvariable=tk.StringVar())
 buffer_0.pack()
 
-make_button("Shift", commands.hold_shift)
 make_button("Copy", commands.copy)
 make_button("Paste", commands.paste)
 make_button("Del", commands.delete)
+
+# Padding
+buffer_1 = tk.Label(window, textvariable=tk.StringVar())
+buffer_1.pack()
+
+make_button("Shift", commands.hold_shift)
+make_button("Full", commands.zones_layout_full)
+make_button("Split", commands.zones_layout_split)
+make_button("Vert", commands.zones_layout_vert)
 
 make_button("Exit", quit_program, tk.BOTTOM)
 
