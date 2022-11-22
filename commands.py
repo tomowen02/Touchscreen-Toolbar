@@ -30,11 +30,9 @@ def snip_screen(pos_before_click):
     mouse.position = pos_before_click
     
 def hold_shift():
-    popupmsg("The shift key is about to be held down virtually")
     keyboard.press(Key.shift)
-    sleep(5)
+    popupmsg("The shift key is currently being held down. Press OK to release")
     keyboard.release(Key.shift)
-    popupmsg("DONE!")
 
 def multi_task():
     keyboard.press(Key.cmd)
