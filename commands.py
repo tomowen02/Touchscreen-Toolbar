@@ -125,3 +125,13 @@ def zones_layout_split():
     keyboard.release(Key.cmd)
     keyboard.release(Key.alt_l)
     keyboard.release("1")
+    
+def zones_layout_triple():
+    keyboard.press(Key.ctrl_l)
+    keyboard.press(Key.cmd)
+    keyboard.press(Key.alt_l)
+    keyboard.press("3")
+    keyboard.release(Key.ctrl_l)
+    keyboard.release(Key.cmd)
+    keyboard.release(Key.alt_l)
+    keyboard.release("3")

@@ -80,6 +80,7 @@ make_button("Shift", commands.hold_shift)
 make_button("Full", commands.zones_layout_full)
 make_button("Split", commands.zones_layout_split)
 make_button("Vert", commands.zones_layout_vert)
+make_button("Triple", commands.zones_layout_triple)
 
 make_button("Exit", quit_program, tk.BOTTOM)
 
