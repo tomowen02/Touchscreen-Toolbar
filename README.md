@@ -2,6 +2,8 @@
 
 Touchscreen toolbar is a python program made to make life easier for touchscreen windows users.
 
+All shortcuts can be easily changed, added, and removed.
+
 This was primarily created with note taking in mind and was designed to be used extensively by myself.
 It contains some shortcuts that are useful when using FancyZones in PowerToys so if you do not have that installed, those shortcuts are easily removed.
 
