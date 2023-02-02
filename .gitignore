@@ -1,2 +1,4 @@
 *.pyc
 /__pycache__
+__pycache__/commands.cpython-310.pyc
+__pycache__/commands.cpython-310.pyc
