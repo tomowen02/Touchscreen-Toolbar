@@ -76,7 +76,7 @@ make_button("Del", commands.delete)
 buffer_1 = tk.Label(window, textvariable=tk.StringVar())
 buffer_1.pack()
 
-make_button("Shift", commands.hold_shift)
+#make_button("Shift", commands.hold_shift)
 make_button("Full", commands.zones_layout_full)
 make_button("Split", commands.zones_layout_split)
 make_button("Vert", commands.zones_layout_vert)

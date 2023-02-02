@@ -2,7 +2,7 @@ from pynput.keyboard import Key, Controller as Keyboard_Controller
 from pynput.mouse import Controller as Mouse_Controller
 from os import system
 from time import sleep
-from popupmsg import popupmsg
+from shiftPopupmsg import shiftPopupmsg
 from tempfile import gettempdir
 
 mouse = Mouse_Controller()
@@ -17,6 +17,18 @@ def get_cursor_pos(filename="pointer_loc.txt"):
         pos_as_tuple = eval(pos_as_str)
         return pos_as_tuple
 
+def fancy_zones_shortcut_hold(layout_number):
+    layout_number = str(int(layout_number))
+    keyboard.press(Key.ctrl_l)
+    keyboard.press(Key.cmd)
+    keyboard.press(Key.alt_l)
+    keyboard.press(layout_number)
+    keyboard.release(Key.ctrl_l)
+    keyboard.release(Key.cmd)
+    keyboard.release(Key.alt_l)
+    keyboard.release(layout_number)
+    hold_shift()
+
 
 ### Command functions ###
 
@@ -30,9 +42,7 @@ def snip_screen(pos_before_click):
     mouse.position = pos_before_click
     
 def hold_shift():
-    keyboard.press(Key.shift)
-    popupmsg("The shift key is currently being held down. Press OK to release")
-    keyboard.release(Key.shift)
+    shiftPopupmsg("The shift key is currently being held down. Press OK to release")
 
 def multi_task():
     keyboard.press(Key.cmd)
@@ -53,7 +63,7 @@ def whiteboard():
 def copy():
     keyboard.press(Key.alt_l)
     keyboard.press(Key.tab)
-    sleep(0.1)
+    sleep(0.15)
     keyboard.release(Key.tab)
     keyboard.release(Key.alt_l)
     sleep(0.2)
@@ -66,7 +76,7 @@ def copy():
 def paste():
     keyboard.press(Key.alt_l)
     keyboard.press(Key.tab)
-    sleep(0.1)
+    sleep(0.15)
     keyboard.release(Key.tab)
     keyboard.release(Key.alt_l)
     sleep(0.2)
@@ -79,7 +89,7 @@ def paste():
 def delete():
     keyboard.press(Key.alt_l)
     keyboard.press(Key.tab)
-    sleep(0.1)
+    sleep(0.15)
     keyboard.release(Key.tab)
     keyboard.release(Key.alt_l)
     sleep(0.2)
@@ -97,41 +107,13 @@ def osk(pos_before_click):
     mouse.position = pos_before_click
     
 def zones_layout_vert():
-    keyboard.press(Key.ctrl_l)
-    keyboard.press(Key.cmd)
-    keyboard.press(Key.alt_l)
-    keyboard.press("0")
-    keyboard.release(Key.ctrl_l)
-    keyboard.release(Key.cmd)
-    keyboard.release(Key.alt_l)
-    keyboard.release("0")
+    fancy_zones_shortcut_hold(0)
     
 def zones_layout_full():
-    keyboard.press(Key.ctrl_l)
-    keyboard.press(Key.cmd)
-    keyboard.press(Key.alt_l)
-    keyboard.press("2")
-    keyboard.release(Key.ctrl_l)
-    keyboard.release(Key.cmd)
-    keyboard.release(Key.alt_l)
-    keyboard.release("2")
+    fancy_zones_shortcut_hold(2)
     
 def zones_layout_split():
-    keyboard.press(Key.ctrl_l)
-    keyboard.press(Key.cmd)
-    keyboard.press(Key.alt_l)
-    keyboard.press("1")
-    keyboard.release(Key.ctrl_l)
-    keyboard.release(Key.cmd)
-    keyboard.release(Key.alt_l)
-    keyboard.release("1")
+    fancy_zones_shortcut_hold(1)
     
 def zones_layout_triple():
-    keyboard.press(Key.ctrl_l)
-    keyboard.press(Key.cmd)
-    keyboard.press(Key.alt_l)
-    keyboard.press("3")
-    keyboard.release(Key.ctrl_l)
-    keyboard.release(Key.cmd)
-    keyboard.release(Key.alt_l)
-    keyboard.release("3")
+    fancy_zones_shortcut_hold(3)
