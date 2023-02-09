@@ -100,7 +100,7 @@ time_label = tk.Label(window, textvariable=time_string_var)
 time_label.pack(side=tk.BOTTOM)
 
 make_button("Exit", quit_program, tk.BOTTOM)
-make_button("Minimize", minimize_program, tk.BOTTOM)
+make_button("Min", minimize_program, tk.BOTTOM)
 make_button("Restore", maximize_program, tk.BOTTOM)
 
 Thread(target=save_pointer_location).start()
