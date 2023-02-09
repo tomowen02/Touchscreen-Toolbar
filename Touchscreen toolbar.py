@@ -20,6 +20,18 @@ def loop():
 def quit_program():
     global running
     running = False
+    
+def minimize_program():
+    window.overrideredirect(False)
+    window.iconify()
+    #sleep(5)
+    #maximize_program()
+
+def maximize_program():
+    window.deiconify()
+    window.geometry(f"50x{window.winfo_screenheight()}+0+0")
+    window.overrideredirect(True)
+    window.attributes('-topmost',True)
 
 def make_button(button_text, command, side=tk.TOP):
     button = tk.Button(
@@ -82,12 +94,14 @@ make_button("Split", commands.zones_layout_split)
 make_button("Vert", commands.zones_layout_vert)
 make_button("Triple", commands.zones_layout_triple)
 
-make_button("Exit", quit_program, tk.BOTTOM)
-
 # Display time
 time_string_var = tk.StringVar()
 time_label = tk.Label(window, textvariable=time_string_var)
 time_label.pack(side=tk.BOTTOM)
+
+make_button("Exit", quit_program, tk.BOTTOM)
+make_button("Minimize", minimize_program, tk.BOTTOM)
+make_button("Restore", maximize_program, tk.BOTTOM)
 
 Thread(target=save_pointer_location).start()
 loop()
