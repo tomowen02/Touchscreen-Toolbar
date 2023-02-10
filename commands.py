@@ -23,11 +23,16 @@ def fancy_zones_shortcut_hold(layout_number):
     keyboard.press(Key.cmd)
     keyboard.press(Key.alt_l)
     keyboard.press(layout_number)
+    release_special_keys()
+    keyboard.release(layout_number)
+    hold_shift()
+
+def release_special_keys():
     keyboard.release(Key.ctrl_l)
     keyboard.release(Key.cmd)
     keyboard.release(Key.alt_l)
-    keyboard.release(layout_number)
-    hold_shift()
+    keyboard.release(Key.shift)
+    keyboard.release(Key.tab)
 
 
 ### Command functions ###
@@ -36,8 +41,7 @@ def snip_screen(pos_before_click):
     keyboard.press(Key.cmd)
     keyboard.press(Key.shift)
     keyboard.press("s")
-    keyboard.release(Key.cmd)
-    keyboard.release(Key.shift)
+    release_special_keys()
     keyboard.release("s")
     mouse.position = pos_before_click
     
@@ -47,12 +51,11 @@ def hold_shift():
 def multi_task():
     keyboard.press(Key.cmd)
     keyboard.press(Key.tab)
-    keyboard.release(Key.cmd)
-    keyboard.release(Key.tab)
+    release_special_keys()
     
 def win():
     keyboard.press(Key.cmd)
-    keyboard.release(Key.cmd)
+    release_special_keys()
 
 def one_note():
     system("start onenote:")
@@ -64,45 +67,38 @@ def copy():
     keyboard.press(Key.alt_l)
     keyboard.press(Key.tab)
     sleep(0.15)
-    keyboard.release(Key.tab)
-    keyboard.release(Key.alt_l)
+    release_special_keys()
     sleep(0.2)
     keyboard.press(Key.ctrl_l)
     keyboard.press("c")
-    keyboard.release(Key.ctrl_l)
     keyboard.release("c")
-    print("done")
+    keyboard.release(Key.ctrl_l)
     
 def paste():
     keyboard.press(Key.alt_l)
     keyboard.press(Key.tab)
     sleep(0.15)
-    keyboard.release(Key.tab)
-    keyboard.release(Key.alt_l)
+    release_special_keys()
     sleep(0.2)
     keyboard.press(Key.ctrl_l)
     keyboard.press("v")
-    keyboard.release(Key.ctrl_l)
     keyboard.release("v")
-    print("done")
+    keyboard.release(Key.ctrl_l)
     
 def delete():
     keyboard.press(Key.alt_l)
     keyboard.press(Key.tab)
     sleep(0.15)
-    keyboard.release(Key.tab)
-    keyboard.release(Key.alt_l)
+    release_special_keys()
     sleep(0.2)
     keyboard.press(Key.delete)
     keyboard.release(Key.delete)
-    print("done")
     
 def osk(pos_before_click):
     keyboard.press(Key.cmd)
     keyboard.press(Key.ctrl_l)
     keyboard.press("o")
-    keyboard.release(Key.cmd)
-    keyboard.release(Key.ctrl_l)
+    release_special_keys()
     keyboard.release("o")
     mouse.position = pos_before_click
     
