@@ -94,6 +94,12 @@ make_button("Split", commands.zones_layout_split)
 make_button("Vert", commands.zones_layout_vert)
 make_button("Triple", commands.zones_layout_triple)
 
+# Padding
+buffer_2 = tk.Label(window, textvariable=tk.StringVar())
+buffer_2.pack()
+
+make_button("Release", commands.release_special_keys)
+
 # Display time
 time_string_var = tk.StringVar()
 time_label = tk.Label(window, textvariable=time_string_var)
